@@ -24,6 +24,19 @@ class App extends Component {
   componentDidMount() {
     console.log('[App.js] Inside componentDidMount')
   }
+
+  shouldComponentUpdate (nextProps, nextState) {
+    console.log('[UPDATE App.js] Inside shouldComponentUpdate', nextProps, nextState)
+    return true; //Check the pointer of the objects to see if they are the same, does not do a deep comparison
+  }
+
+  componentWillUpdate (nextProps, nextState) {
+    console.log('[UPDATE App.js] Inside componentWillUpdate', nextProps, nextState)
+  }
+
+  componentDidUpdate () {
+    console.log('[UPDATE App.js] Inside componentDidUpdate')
+  }
   
   deletePersonHandler = (personIndex) => {
     const persons = [...this.state.persons];
