@@ -16,6 +16,23 @@ class Persons extends Component {
     console.log('[Persons.js] Inside componentDidMount')
   }
   
+  componentWillReceiveProps (nextProps) {
+    console.log('[UPDATE Persons.js] Inside componentWillReceiveProps', nextProps)
+  }
+
+  shouldComponentUpdate (nextProps, nextState) {
+    console.log('[UPDATE Persons.js] Inside shouldComponentUpdate', nextProps, nextState)
+    return nextProps.persons != this.props.persons; //Check the pointer of the objects to see if they are the same, does not do a deep comparison
+  }
+
+  componentWillUpdate (nextProps, nextState) {
+    console.log('[UPDATE Persons.js] Inside componentWillUpdate', nextProps, nextState)
+  }
+
+  componentDidUpdate () {
+    console.log('[UPDATE Persons.js] Inside componentDidUpdate')
+  }
+
   render() {
     return this.props.persons.map((person, index) => {
       return <Person 
